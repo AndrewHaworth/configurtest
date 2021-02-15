@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Route, Switch } from "react-router-dom";
+import Header from "./common-components/Header";
+import MainPage from "./pages/MainPage";
+import Contact from "./pages/Contact";
+import NoPage from "./pages/NoPage";
+import Footer from "./common-components/Footer";
+import Data from "./pages/Data";
+import styled from "styled-components";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const PageWrapper = styled.div`
+  padding: 1rem;
+`;
+
+const App = () => (
+  <>
+    <Header />
+    <PageWrapper>
+      <Switch>
+        <Route exact path="/" component={MainPage} />
+        <Route exact path="/Data" component={Data} />
+        <Route exact path="/Contact" component={Contact} />
+        <Route component={NoPage} />
+      </Switch>
+    </PageWrapper>
+    <Footer />
+  </>
+);
 
 export default App;
